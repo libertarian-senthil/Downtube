@@ -1,0 +1,14 @@
+# Neglecting vscode workspace folder
+.vscode
+
+# Neglecting virtual environment 
+.venv
+
+# Neglecting folder named: Props  
+Props/
+
+# Neglecting __Pychahe__ directory
+App/__pycache__
+
+# Neglecting  folder named: Beta
+Beta/
