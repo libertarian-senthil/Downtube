@@ -22,24 +22,24 @@ def clear(link, get_link):
 
 def browse_folder(get_dir):
     global dir_path
-    dir_path = fd.askdirectory()        
+    dir_path = fd.askdirectory()
     get_dir.delete(0, END)
     get_dir.configure(fg= "black")
     get_dir.insert(0, dir_path)
     if dir_path == "":
         get_dir.configure(fg= "grey")
-        get_dir.insert(0, "Choose a folder")    
+        get_dir.insert(0, "Choose a folder")
 
 def check_connectivity(link):                   # Referred website: codespeedy (https://www.codespeedy.com/how-to-check-the-internet-connection-in-python/)
     """ Checks for internet connectivity or valid youtube link """
     try:
-        urllib.request.urlopen(link) 
+        urllib.request.urlopen(link)
     except:
         msg.showerror(
                     title= "Network Error",
-                    message= "Connectivity issue found", 
+                    message= "Connectivity issue found",
                     detail= "Check you internet connectivity \nor\n the link might not be correct"
-                    )        
+                    )
 
 def dwn(download_link, video_resolution, directory):
     """ Downloads the video """
@@ -56,28 +56,28 @@ def dwn(download_link, video_resolution, directory):
             video = yt.streams.filter(progressive= True, file_extension= "mp4", res= "360p", type= "video").first()
             if video == None:
                 raise AttributeError
-            else: 
+            else:
                 return video
-                #video.download(output_path= directory)       
+                #video.download(output_path= directory)
         except AttributeError:
             msg.showinfo(title= "Downtube",
                          message= "The video resolution is not available to be downloaded ",
-                         detail= "Try downloading with other resolution" 
+                         detail= "Try downloading with other resolution"
                         )
     elif video_resolution == "720p":
         try:
             video = yt.streams.filter(progressive= True, file_extension= "mp4", res= "720p", type= "video").first()
             if video == None:
                 raise AttributeError
-            else: 
+            else:
                 return video
-            #video.download(output_path= directory)       
+            #video.download(output_path= directory)
         except AttributeError:
             msg.showinfo(title= "Downtube",
                          message= "The video resolution is not available to be downloaded ",
                          detail= "Try downloading with other resolution"
                         )
-    
+
 def clear_inputs(get_link, get_resolution):
     input_of_get_link = get_link.get()
     input_of_get_resolution = get_resolution.get()
@@ -88,7 +88,7 @@ def clear_inputs(get_link, get_resolution):
 
 def download_bt(download_link, get_link, video_resolution, directory, get_dir, resolution_box ):
     """ All the process for downloading will be done here """
-    verify_YT = re.search(r"youtube.com", download_link)   # Verifying youtube link or not            
+    verify_YT = re.search(r"youtube.com", download_link)   # Verifying youtube link or not
 
 
     try:
@@ -115,24 +115,24 @@ def download_bt(download_link, get_link, video_resolution, directory, get_dir, r
     except ex.Link_Error:
         msg.showerror(
                     title= "Link Error",
-                    message= "Youtube link Not Found", 
+                    message= "Youtube link Not Found",
                     detail= "You've not given any link in the \"Link section\""
                     )
     except ex.InvalidLink:
         msg.showerror(
                     title= "Invalid link",
-                    message= "Error: Invalid link", 
+                    message= "Error: Invalid link",
                     detail= "The given link is invalid or doesn't belongs to youtube"
                     )
-    
+
     try:
         if directory == "Choose a folder" :
             raise ex.DirectoryError
     except ex.DirectoryError:
         msg.showerror(
                     title = "Directory Error",
-                    message="Error: No directory is given to save the file"  
+                    message="Error: No directory is given to save the file"
                     )
-    
+
 if __name__=='__main__':
     dt.main()

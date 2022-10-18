@@ -7,8 +7,8 @@ import Functionality as fn
 
 def main():
 
-    # Root window 
-    main_window = tk.Tk()                       
+    # Root window
+    main_window = tk.Tk()
     main_window.title("Downtube")               # Title of the window
     main_window.minsize(600, 400)             # Default Window size
     main_window.rowconfigure(0,weight=1)        # Rowconfiguration of root window in order to expand widgets, when window is is resized.
@@ -16,7 +16,7 @@ def main():
     main_window.rowconfigure(1,weight=1)        # Rowconfiguration of root window in order to expand widgets, when window is is resized. ###
     main_window.columnconfigure(1, weight= 1)   # Rowconfiguration of root window in order to expand widgets, when window is is resized. ###
     main_window.configure(bg= "white")          # Background color for root window
-    icon_img =tk.PhotoImage(file= "Props\YT_icon_png_64x64.png")
+    icon_img =tk.PhotoImage(file= "App\\Props\\YT_icon_png_64x64.png")
     main_window.iconphoto(True, icon_img)
 
 # Parent Frame widgets:
@@ -44,9 +44,9 @@ def main():
     linke_label = tk.Label(main_frame, text= "Browse to save the file", bg= "white", width= 40, anchor= "w")
     linke_label.grid(row= 2, column= 1)
 
-    # Display  label indicating --> 'Choose the resolution'. 
+    # Display  label indicating --> 'Choose the resolution'.
     resolution_lb = tk.Label(
-                        main_frame, text= "Choose the resolution", width= 15, 
+                        main_frame, text= "Choose the resolution", width= 15,
                         height= 1, anchor= "w", bg= "white"
                         )
     resolution_lb.grid(row=4, column= 1, pady=2, sticky= "we")
@@ -63,7 +63,7 @@ def main():
     get_dir.grid(row= 3, column= 1, sticky= "wE")
     get_dir.insert(0, "Choose a folder")
 
-    # Combo box Widget --> Shows the options(Resolution) available. 
+    # Combo box Widget --> Shows the options(Resolution) available.
     my_string_var = tk.StringVar()
     resolution_box = ttk.Combobox(
                             main_frame, textvariable=my_string_var,
@@ -72,8 +72,8 @@ def main():
 
     # Button widget --> Clear the Input field of youtube entry widget
     clear_bt = tk.Button(
-                        main_frame, text= "Clear", 
-                        width= 10, height= 1, 
+                        main_frame, text= "Clear",
+                        width= 10, height= 1,
                         bg= "grey",
                         command= lambda: fn.clear(link, get_link)
                         )
@@ -82,7 +82,7 @@ def main():
     # Button widget --> Opens file explorer to save the file
     temp_bt = tk.Button(
                         main_frame, text= "Browse",
-                        relief= RAISED, width= 10, 
+                        relief= RAISED, width= 10,
                         height= 1, bg= "grey",
                         command= lambda :fn.browse_folder(get_dir)
                         )
@@ -91,7 +91,7 @@ def main():
     # Button widget --> Downloads the video
     download_file = tk.Button(
                         main_frame, text= "Download",
-                        relief= RAISED, width= 10, 
+                        relief= RAISED, width= 10,
                         height= 1, bg= "grey", anchor= "center",
                         command= lambda :fn.download_bt(link.get(), get_link, resolution_box.get(), directory.get(), get_dir, resolution_box)
                         )
