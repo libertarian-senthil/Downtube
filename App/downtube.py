@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
-from tkinter.constants import CENTER, LEFT, RAISED, SUNKEN
+from tkinter.constants import  RAISED
 
 # Importing the user defined module.
 import Functionality as fn
@@ -16,8 +16,6 @@ def main():
     main_window.rowconfigure(1,weight=1)        # Rowconfiguration of root window in order to expand widgets, when window is is resized. ###
     main_window.columnconfigure(1, weight= 1)   # Rowconfiguration of root window in order to expand widgets, when window is is resized. ###
     main_window.configure(bg= "white")          # Background color for root window
-    icon_img =tk.PhotoImage(file= "App\\Props\\YT_icon_png_64x64.png")
-    main_window.iconphoto(True, icon_img)
 
 # Parent Frame widgets:
 
